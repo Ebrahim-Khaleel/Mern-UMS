@@ -1,9 +1,9 @@
 import express from "express";
-import { register, login } from "../controllers/users.js";
+import { editProfile } from "../controllers/users.js";
+import { verifyToken } from "../middlewares/auth.js";
 
-const router = express.Router();
+const router = express.Router()
 
-router.post("/signup", register);
-router.post("/login", login);
+router.post("/:userId/editProfile", verifyToken, editProfile);
 
 export default router;

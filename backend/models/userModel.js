@@ -15,13 +15,9 @@ const userSchema = mongoose.Schema(
             type : String,
             required : true
         },
-        phone : {
-            type : Number,
-            required : true,
-        },
         profilePicture : {
             type : String,
-            default : ""
+            default : "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
         }
     },{timestamps : true}
 );

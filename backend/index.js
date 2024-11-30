@@ -5,8 +5,9 @@ import express from 'express';
 import mongoose from "mongoose";
 import cors from "cors"
 
-import userRoute from "./routes/users.js"
+import authRoute from "./routes/auth.js"
 import adminRoute from "./routes/admin.js"
+import userRoute from "./routes/users.js"
 
 // database connection
 mongoose
@@ -19,8 +20,10 @@ const app = express();
 app.use(express.json())
 app.use(cors({origin : "*"}));
 
-app.use('/',userRoute);
-app.use('/admin',adminRoute)
+app.use('/',authRoute);
+app.use('/admin',adminRoute);
+app.use('/user',userRoute);
 
-app.listen(process.env.PORT);
+const PORT = process.env.PORT
+app.listen(PORT, ()=>console.log(`Server running on PORT : ${PORT}`));
 export default app;
